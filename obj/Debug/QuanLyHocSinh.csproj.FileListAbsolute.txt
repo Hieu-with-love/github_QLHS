@@ -1,0 +1,11 @@
+D:\Nam 2 HK2 2023-2024\Winforms\Tuan 4\QuanLyHocSinh\bin\Debug\QuanLyHocSinh.exe.config
+D:\Nam 2 HK2 2023-2024\Winforms\Tuan 4\QuanLyHocSinh\bin\Debug\QuanLyHocSinh.exe
+D:\Nam 2 HK2 2023-2024\Winforms\Tuan 4\QuanLyHocSinh\bin\Debug\QuanLyHocSinh.pdb
+D:\Nam 2 HK2 2023-2024\Winforms\Tuan 4\QuanLyHocSinh\obj\Debug\QuanLyHocSinh.csproj.AssemblyReference.cache
+D:\Nam 2 HK2 2023-2024\Winforms\Tuan 4\QuanLyHocSinh\obj\Debug\QuanLyHocSinh.csproj.SuggestedBindingRedirects.cache
+D:\Nam 2 HK2 2023-2024\Winforms\Tuan 4\QuanLyHocSinh\obj\Debug\QuanLyHocSinh.FHocSinh.resources
+D:\Nam 2 HK2 2023-2024\Winforms\Tuan 4\QuanLyHocSinh\obj\Debug\QuanLyHocSinh.Properties.Resources.resources
+D:\Nam 2 HK2 2023-2024\Winforms\Tuan 4\QuanLyHocSinh\obj\Debug\QuanLyHocSinh.csproj.GenerateResource.cache
+D:\Nam 2 HK2 2023-2024\Winforms\Tuan 4\QuanLyHocSinh\obj\Debug\QuanLyHocSinh.csproj.CoreCompileInputs.cache
+D:\Nam 2 HK2 2023-2024\Winforms\Tuan 4\QuanLyHocSinh\obj\Debug\QuanLyHocSinh.exe
+D:\Nam 2 HK2 2023-2024\Winforms\Tuan 4\QuanLyHocSinh\obj\Debug\QuanLyHocSinh.pdb
