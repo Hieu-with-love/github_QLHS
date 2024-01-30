@@ -11,10 +11,10 @@ using System.Data.SqlClient;
 
 namespace QuanLyHocSinh
 {
-    public partial class FHocSinh : Form
+    public partial class frmHS : Form
     {
         HocSinhDAO hsDAO = new HocSinhDAO();
-        public FHocSinh()
+        public frmHS()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace QuanLyHocSinh
 
         private void FHocSinh_Load(object sender, EventArgs e)
         {
-            dgvHS.DataSource = hsDAO.LoadDataTable();
+            dgvHS.DataSource = hsDAO.LoadDataTableForHS();
             dgvHS.Columns["Id"].HeaderText = "Identity";
             dgvHS.Columns["hoten"].HeaderText = "Họ tên";
             dgvHS.Columns["diachi"].HeaderText = "Địa chỉ";
@@ -34,21 +34,21 @@ namespace QuanLyHocSinh
         {
             HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value);
             hsDAO.Add(hs);
-            dgvHS.DataSource = hsDAO.LoadDataTable();
+            dgvHS.DataSource = hsDAO.LoadDataTableForHS();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
             HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value);
             hsDAO.Remove(hs);
-            dgvHS.DataSource = hsDAO.LoadDataTable();
+            dgvHS.DataSource = hsDAO.LoadDataTableForHS();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value);
             hsDAO.Edit(hs);
-            dgvHS.DataSource = hsDAO.LoadDataTable();
+            dgvHS.DataSource = hsDAO.LoadDataTableForHS();
         }
 
         private void dgvHS_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

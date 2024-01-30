@@ -13,7 +13,7 @@ namespace QuanLyHocSinh
     {
         string sql;
         
-        public DataTable LoadDataTable()
+        public DataTable LoadDataTableForHS()
         {
             sql = "SELECT * FROM HocSinh";
             return base.LoadDataTable(sql);

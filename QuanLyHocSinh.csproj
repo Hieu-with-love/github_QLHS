@@ -47,18 +47,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConnection.cs" />
+    <Compile Include="FGiaoVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FGiaoVien.Designer.cs">
+      <DependentUpon>FGiaoVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="FHocSinh.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FHocSinh.Designer.cs">
       <DependentUpon>FHocSinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="GiaoVien.cs" />
+    <Compile Include="GiaoVienDAO.cs" />
     <Compile Include="HocSinh.cs" />
     <Compile Include="HocSinhDAO.cs" />
     <Compile Include="PersonDAO.cs" />
     <Compile Include="Persons.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FGiaoVien.resx">
+      <DependentUpon>FGiaoVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FHocSinh.resx">
       <DependentUpon>FHocSinh.cs</DependentUpon>
     </EmbeddedResource>

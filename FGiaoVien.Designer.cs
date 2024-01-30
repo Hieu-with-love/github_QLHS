@@ -1,6 +1,6 @@
 ﻿namespace QuanLyHocSinh
 {
-    partial class frmHS
+    partial class frmGV
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.grbHS = new System.Windows.Forms.GroupBox();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.dgvGV = new System.Windows.Forms.DataGridView();
+            this.grbGV = new System.Windows.Forms.GroupBox();
             this.dtpBirthday = new System.Windows.Forms.DateTimePicker();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
@@ -37,30 +41,70 @@
             this.lblAddress = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
-            this.dgvHS = new System.Windows.Forms.DataGridView();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.grbHS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGV)).BeginInit();
+            this.grbGV.SuspendLayout();
             this.SuspendLayout();
             // 
-            // grbHS
+            // btnRemove
             // 
-            this.grbHS.Controls.Add(this.dtpBirthday);
-            this.grbHS.Controls.Add(this.txtName);
-            this.grbHS.Controls.Add(this.txtAddress);
-            this.grbHS.Controls.Add(this.txtId);
-            this.grbHS.Controls.Add(this.lblBirthday);
-            this.grbHS.Controls.Add(this.lblAddress);
-            this.grbHS.Controls.Add(this.lblName);
-            this.grbHS.Controls.Add(this.lblId);
-            this.grbHS.Location = new System.Drawing.Point(13, 47);
-            this.grbHS.Name = "grbHS";
-            this.grbHS.Size = new System.Drawing.Size(283, 263);
-            this.grbHS.TabIndex = 0;
-            this.grbHS.TabStop = false;
-            this.grbHS.Text = "Thông tin học sinh";
+            this.btnRemove.Location = new System.Drawing.Point(124, 353);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 46);
+            this.btnRemove.TabIndex = 9;
+            this.btnRemove.Text = "Xóa";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(230, 353);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 46);
+            this.btnEdit.TabIndex = 8;
+            this.btnEdit.Text = "Sửa";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(21, 353);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 46);
+            this.btnAdd.TabIndex = 7;
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // dgvGV
+            // 
+            this.dgvGV.AllowUserToAddRows = false;
+            this.dgvGV.AllowUserToDeleteRows = false;
+            this.dgvGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGV.Location = new System.Drawing.Point(311, 47);
+            this.dgvGV.Name = "dgvGV";
+            this.dgvGV.ReadOnly = true;
+            this.dgvGV.RowHeadersWidth = 51;
+            this.dgvGV.RowTemplate.Height = 24;
+            this.dgvGV.Size = new System.Drawing.Size(486, 391);
+            this.dgvGV.TabIndex = 6;
+            this.dgvGV.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvGV_CellContentDoubleClick);
+            // 
+            // grbGV
+            // 
+            this.grbGV.Controls.Add(this.dtpBirthday);
+            this.grbGV.Controls.Add(this.txtName);
+            this.grbGV.Controls.Add(this.txtAddress);
+            this.grbGV.Controls.Add(this.txtId);
+            this.grbGV.Controls.Add(this.lblBirthday);
+            this.grbGV.Controls.Add(this.lblAddress);
+            this.grbGV.Controls.Add(this.lblName);
+            this.grbGV.Controls.Add(this.lblId);
+            this.grbGV.Location = new System.Drawing.Point(22, 47);
+            this.grbGV.Name = "grbGV";
+            this.grbGV.Size = new System.Drawing.Size(283, 263);
+            this.grbGV.TabIndex = 5;
+            this.grbGV.TabStop = false;
+            this.grbGV.Text = "Thông tin giáo viên";
             // 
             // dtpBirthday
             // 
@@ -126,51 +170,7 @@
             this.lblId.TabIndex = 0;
             this.lblId.Text = "Id";
             // 
-            // dgvHS
-            // 
-            this.dgvHS.AllowUserToAddRows = false;
-            this.dgvHS.AllowUserToDeleteRows = false;
-            this.dgvHS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHS.Location = new System.Drawing.Point(302, 47);
-            this.dgvHS.Name = "dgvHS";
-            this.dgvHS.ReadOnly = true;
-            this.dgvHS.RowHeadersWidth = 51;
-            this.dgvHS.RowTemplate.Height = 24;
-            this.dgvHS.Size = new System.Drawing.Size(486, 391);
-            this.dgvHS.TabIndex = 1;
-            this.dgvHS.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHS_CellContentDoubleClick);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 353);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 46);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(221, 353);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 46);
-            this.btnEdit.TabIndex = 3;
-            this.btnEdit.Text = "Sửa";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Location = new System.Drawing.Point(115, 353);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(75, 46);
-            this.btnRemove.TabIndex = 4;
-            this.btnRemove.Text = "Xóa";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // frmHS
+            // frmGV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -178,22 +178,26 @@
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.dgvHS);
-            this.Controls.Add(this.grbHS);
-            this.Name = "frmHS";
+            this.Controls.Add(this.dgvGV);
+            this.Controls.Add(this.grbGV);
+            this.Name = "frmGV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Hoc Sinh";
-            this.Load += new System.EventHandler(this.FHocSinh_Load);
-            this.grbHS.ResumeLayout(false);
-            this.grbHS.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHS)).EndInit();
+            this.Text = "FGiaoVien";
+            this.Load += new System.EventHandler(this.FGiaoVien_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGV)).EndInit();
+            this.grbGV.ResumeLayout(false);
+            this.grbGV.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox grbHS;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.DataGridView dgvGV;
+        private System.Windows.Forms.GroupBox grbGV;
         private System.Windows.Forms.DateTimePicker dtpBirthday;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtAddress;
@@ -202,10 +206,5 @@
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.DataGridView dgvHS;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnRemove;
     }
 }
-
