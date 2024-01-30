@@ -138,6 +138,7 @@
             this.dgvHS.RowTemplate.Height = 24;
             this.dgvHS.Size = new System.Drawing.Size(486, 391);
             this.dgvHS.TabIndex = 1;
+            this.dgvHS.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHS_CellContentDoubleClick);
             // 
             // btnAdd
             // 

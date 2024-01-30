@@ -50,7 +50,7 @@ namespace QuanLyHocSinh
                     new SqlParameter("@dc", SqlDbType.NVarChar) {Value = hs.Address},
                     new SqlParameter("@ns", SqlDbType.Date) {Value = hs.Birthday}
                 };
-            sql = "UPDATE HocSinh SET id=@id,hoten=@ht,diachi=@dc,ngaysinh=@ns WHERE id=@id";
+            sql = "UPDATE HocSinh SET hoten=@ht,diachi=@dc,ngaysinh=@ns WHERE id=@id";
             base.Edit(sql, lstParam);
         }
     }
