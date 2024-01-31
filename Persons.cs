@@ -12,16 +12,26 @@ namespace QuanLyHocSinh
         private string name;
         private string address;
         private DateTime birthday;
-        public Persons(string id, string name, string address, DateTime birthday)
+        private string email;
+        private string phone;
+        private bool sex;
+        public Persons(string id, string name, string address, DateTime birthday, string email, string phone, bool sex)
         {
             this.id=id;
             this.name=name;
             this.address=address;
             this.birthday=birthday;
+            this.email=email;
+            this.phone = phone;
+            this.sex = sex;
         }
         public string Id { get => id; }
         public string Name { get => name; }
         public string Address { get => address; }
         public DateTime Birthday { get => birthday; }
+        public string Email { get => email; }
+        public string Phone { get => phone; }
+        public bool Sex { get => sex; }
+
     }
 }
