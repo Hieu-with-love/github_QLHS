@@ -8,6 +8,6 @@ namespace QuanLyHocSinh
 {
     public class HocSinh : Persons
     {
-        public HocSinh(string id, string name, string address, DateTime birthday) : base(id,name,address,birthday){ }
+        public HocSinh(string id, string name, string address, DateTime birthday, string email,string phone, string sex) : base(id,name,address,birthday,email,phone,sex){ }
     }
 }

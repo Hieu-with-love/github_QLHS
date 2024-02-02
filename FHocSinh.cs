@@ -28,26 +28,32 @@ namespace QuanLyHocSinh
             dgvHS.Columns["hoten"].HeaderText = "Họ tên";
             dgvHS.Columns["diachi"].HeaderText = "Địa chỉ";
             dgvHS.Columns["ngaysinh"].HeaderText = "Ngày sinh";
+            dgvHS.Columns["email"].HeaderText = "Email";
+            dgvHS.Columns["phone"].HeaderText = "Số điện thoại";
+            dgvHS.Columns["gioitinh"].HeaderText = "Giới tính";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value);
-            hsDAO.Add(hs);
+            string gt = rdbWoman.Checked ? "1" : "0";
+            HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value, txtEmail.Text, txtPhone.Text, gt); 
+            hsDAO.AddHs(hs);
             dgvHS.DataSource = hsDAO.LoadDataTableForHS();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value);
-            hsDAO.Remove(hs);
+            string gt = rdbWoman.Checked ? "1" : "0";
+            HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value, txtEmail.Text, txtPhone.Text, gt); 
+            hsDAO.RemoveHs(hs);
             dgvHS.DataSource = hsDAO.LoadDataTableForHS();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value);
-            hsDAO.Edit(hs);
+            string gt = rdbWoman.Checked ? "1" : "0";
+            HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value, txtEmail.Text, txtPhone.Text, gt); 
+            hsDAO.EditHs(hs);
             dgvHS.DataSource = hsDAO.LoadDataTableForHS();
         }
 
@@ -59,7 +65,20 @@ namespace QuanLyHocSinh
                 txtName.Text = dgvHS.Rows[e.RowIndex].Cells["hoten"].Value.ToString();
                 txtAddress.Text = dgvHS.Rows[e.RowIndex].Cells["diachi"].Value.ToString();
                 dtpBirthday.Text = dgvHS.Rows[e.RowIndex].Cells["ngaysinh"].Value.ToString();
+                txtEmail.Text = dgvHS.Rows[e.RowIndex].Cells["email"].Value.ToString();
+                txtPhone.Text = dgvHS.Rows[e.RowIndex].Cells["phone"].Value.ToString();
+                if (dgvHS.Rows[e.RowIndex].Cells["gioitinh"].Value.ToString()=="1")
+                {
+                    rdbWoman.Checked = true;
+                    rdbMen.Checked = false;
+                }
+                else
+                {
+                    rdbWoman.Checked = false;
+                    rdbMen.Checked = true;
+                }
             }
         }
+
     }
 }

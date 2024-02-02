@@ -14,8 +14,8 @@ namespace QuanLyHocSinh
         private DateTime birthday;
         private string email;
         private string phone;
-        private bool sex;
-        public Persons(string id, string name, string address, DateTime birthday, string email, string phone, bool sex)
+        private string sex;
+        public Persons(string id, string name, string address, DateTime birthday, string email, string phone, string sex)
         {
             this.id=id;
             this.name=name;
@@ -31,7 +31,7 @@ namespace QuanLyHocSinh
         public DateTime Birthday { get => birthday; }
         public string Email { get => email; }
         public string Phone { get => phone; }
-        public bool Sex { get => sex; }
+        public string Sex { get => sex; }
 
     }
 }

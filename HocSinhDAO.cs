@@ -19,19 +19,22 @@ namespace QuanLyHocSinh
             return base.LoadDataTable(sql);
         }
 
-        public void Add(HocSinh hs)
+        public void AddHs(HocSinh hs)
         {
             SqlParameter[] lstParam =
                 {
                     new SqlParameter("@ht", SqlDbType.NVarChar) {Value = hs.Name},
                     new SqlParameter("@dc", SqlDbType.NVarChar) {Value = hs.Address},
                     new SqlParameter("@ns", SqlDbType.Date) {Value = hs.Birthday},
+                    new SqlParameter("@email", SqlDbType.VarChar) {Value = hs.Email},
+                    new SqlParameter("@phone", SqlDbType.VarChar) {Value = hs.Phone},
+                    new SqlParameter("@gt", SqlDbType.Int) {Value = hs.Sex}
                 };
-            sql = "INSERT INTO HocSinh(hoten,diachi,ngaysinh) VALUES(@ht,@dc,@ns)";
+            sql = "INSERT INTO HocSinh(hoten,diachi,ngaysinh,email,phone,gioitinh) VALUES(@ht,@dc,@ns,@email,@phone,@gt)";
             base.Add(sql, lstParam);
         }
 
-        public void Remove(HocSinh hs)
+        public void RemoveHs(HocSinh hs)
         {
             SqlParameter[] lstParam =
                 {
@@ -41,16 +44,19 @@ namespace QuanLyHocSinh
             base.Remove(sql, lstParam);
         }
 
-        public void Edit(HocSinh hs)
+        public void EditHs(HocSinh hs)
         {
             SqlParameter[] lstParam =
                 {
                     new SqlParameter("@id", SqlDbType.NVarChar) {Value = hs.Id},
                     new SqlParameter("@ht", SqlDbType.NVarChar) {Value = hs.Name},
                     new SqlParameter("@dc", SqlDbType.NVarChar) {Value = hs.Address},
-                    new SqlParameter("@ns", SqlDbType.Date) {Value = hs.Birthday}
+                    new SqlParameter("@ns", SqlDbType.Date) {Value = hs.Birthday},
+                    new SqlParameter("@email", SqlDbType.VarChar) {Value = hs.Email},
+                    new SqlParameter("@phone", SqlDbType.VarChar) {Value = hs.Phone},
+                    new SqlParameter("@gt", SqlDbType.Int) {Value = hs.Sex}
                 };
-            sql = "UPDATE HocSinh SET hoten=@ht,diachi=@dc,ngaysinh=@ns WHERE id=@id";
+            sql = "UPDATE HocSinh SET hoten=@ht,diachi=@dc,ngaysinh=@ns,email=@email,phone=@phone,gioitinh=@gt WHERE id=@id";
             base.Edit(sql, lstParam);
         }
     }

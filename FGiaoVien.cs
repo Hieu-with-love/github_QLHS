@@ -29,7 +29,8 @@ namespace QuanLyHocSinh
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            GiaoVien gv = new GiaoVien(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value);
+            string gt = rdbWoman.Checked ? "1" : "0";
+            GiaoVien gv = new GiaoVien(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value,txtEmail.Text,txtPhone.Text, gt);
             gvDAO.AddGV(gv);
             dgvGV.DataSource = gvDAO.LoadDataForGV();
 
@@ -37,15 +38,16 @@ namespace QuanLyHocSinh
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            GiaoVien gv = new GiaoVien(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value);
+            string gt = rdbWoman.Checked ? "1" : "0";
+            GiaoVien gv = new GiaoVien(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value, txtEmail.Text, txtPhone.Text, gt);
             gvDAO.RemoveGV(gv);
             dgvGV.DataSource = gvDAO.LoadDataForGV();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            GiaoVien gv = new GiaoVien(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value);
-            gvDAO.EditGV(gv);
+            string gt = rdbWoman.Checked ? "1" : "0";
+            GiaoVien gv = new GiaoVien(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value, txtEmail.Text, txtPhone.Text, gt); gvDAO.EditGV(gv);
             dgvGV.DataSource = gvDAO.LoadDataForGV();
         }
 
@@ -57,7 +59,6 @@ namespace QuanLyHocSinh
                 txtName.Text = dgvGV.Rows[e.RowIndex].Cells["hoten"].Value.ToString();
                 txtAddress.Text = dgvGV.Rows[e.RowIndex].Cells["diachi"].Value.ToString();
                 dtpBirthday.Text = dgvGV.Rows[e.RowIndex].Cells["ngaysinh"].Value.ToString();
-
             }
         }
     }
