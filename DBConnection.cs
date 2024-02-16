@@ -11,7 +11,7 @@ namespace QuanLyHocSinh
 {
     public class DBConnection
     {
-        SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=QLHS;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=QuanLyHocSinh;Integrated Security=True");
         SqlCommand cmd;
         public DataTable LoadDataTable(string sql)
         {

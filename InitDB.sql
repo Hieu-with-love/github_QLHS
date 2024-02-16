@@ -1,9 +1,4 @@
-﻿DROP TABLE HocSinh
-GO
-DROP TABLE GiaoVien
-GO
-
-CREATE TABLE HocSinh(
+﻿CREATE TABLE HocSinh(
 	id int PRIMARY KEY IDENTITY,
 	hoten nvarchar(150),
 	diachi nvarchar(150),
