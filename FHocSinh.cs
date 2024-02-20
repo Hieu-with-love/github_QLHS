@@ -23,59 +23,59 @@ namespace QuanLyHocSinh
 
         private void FHocSinh_Load(object sender, EventArgs e)
         {
-            dgvHS.DataSource = hsDAO.LoadDataTableForHS();
-            dgvHS.Columns["Id"].HeaderText = "Identity";
-            dgvHS.Columns["hoten"].HeaderText = "Họ tên";
-            dgvHS.Columns["diachi"].HeaderText = "Địa chỉ";
-            dgvHS.Columns["ngaysinh"].HeaderText = "Ngày sinh";
-            dgvHS.Columns["email"].HeaderText = "Email";
-            dgvHS.Columns["phone"].HeaderText = "Số điện thoại";
-            dgvHS.Columns["gioitinh"].HeaderText = "Giới tính";
+            ucThongTinHS.DgvInfo.DataSource = hsDAO.LoadDataTableForHS();
+            ucThongTinHS.DgvInfo.Columns["Id"].HeaderText = "Identity";
+            ucThongTinHS.DgvInfo.Columns["hoten"].HeaderText = "Họ tên";
+            ucThongTinHS.DgvInfo.Columns["diachi"].HeaderText = "Địa chỉ";
+            ucThongTinHS.DgvInfo.Columns["ngaysinh"].HeaderText = "Ngày sinh";
+            ucThongTinHS.DgvInfo.Columns["email"].HeaderText = "Email";
+            ucThongTinHS.DgvInfo.Columns["phone"].HeaderText = "Số điện thoại";
+            ucThongTinHS.DgvInfo.Columns["gioitinh"].HeaderText = "Giới tính";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string gt = rdbWoman.Checked ? "1" : "0";
-            HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value, txtEmail.Text, txtPhone.Text, gt); 
+            string gt = ucThongTinHS.RdbWoman.Checked ? "1" : "0";
+            HocSinh hs = new HocSinh(ucThongTinHS.TxtId.Text, ucThongTinHS.TxtName.Text, ucThongTinHS.TxtAddress.Text, ucThongTinHS.DtpBirthday.Value, ucThongTinHS.TxtEmail.Text, ucThongTinHS.TxtPhone.Text, gt); 
             hsDAO.AddHs(hs);
-            dgvHS.DataSource = hsDAO.LoadDataTableForHS();
+            ucThongTinHS.DgvInfo.DataSource = hsDAO.LoadDataTableForHS();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            string gt = rdbWoman.Checked ? "1" : "0";
-            HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value, txtEmail.Text, txtPhone.Text, gt); 
-            hsDAO.RemoveHs(hs);
-            dgvHS.DataSource = hsDAO.LoadDataTableForHS();
+            string gt = ucThongTinHS.RdbWoman.Checked ? "1" : "0";
+            HocSinh hs = new HocSinh(ucThongTinHS.TxtId.Text, ucThongTinHS.TxtName.Text, ucThongTinHS.TxtAddress.Text, ucThongTinHS.DtpBirthday.Value, ucThongTinHS.TxtEmail.Text, ucThongTinHS.TxtPhone.Text, gt);
+            hsDAO.AddHs(hs);
+            ucThongTinHS.DgvInfo.DataSource = hsDAO.LoadDataTableForHS();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string gt = rdbWoman.Checked ? "1" : "0";
-            HocSinh hs = new HocSinh(txtId.Text, txtName.Text, txtAddress.Text, dtpBirthday.Value, txtEmail.Text, txtPhone.Text, gt); 
-            hsDAO.EditHs(hs);
-            dgvHS.DataSource = hsDAO.LoadDataTableForHS();
+            string gt = ucThongTinHS.RdbWoman.Checked ? "1" : "0";
+            HocSinh hs = new HocSinh(ucThongTinHS.TxtId.Text, ucThongTinHS.TxtName.Text, ucThongTinHS.TxtAddress.Text, ucThongTinHS.DtpBirthday.Value, ucThongTinHS.TxtEmail.Text, ucThongTinHS.TxtPhone.Text, gt);
+            hsDAO.AddHs(hs);
+            ucThongTinHS.DgvInfo.DataSource = hsDAO.LoadDataTableForHS();
         }
 
         private void dgvHS_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                txtId.Text = dgvHS.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                txtName.Text = dgvHS.Rows[e.RowIndex].Cells["hoten"].Value.ToString();
-                txtAddress.Text = dgvHS.Rows[e.RowIndex].Cells["diachi"].Value.ToString();
-                dtpBirthday.Text = dgvHS.Rows[e.RowIndex].Cells["ngaysinh"].Value.ToString();
-                txtEmail.Text = dgvHS.Rows[e.RowIndex].Cells["email"].Value.ToString();
-                txtPhone.Text = dgvHS.Rows[e.RowIndex].Cells["phone"].Value.ToString();
-                if (dgvHS.Rows[e.RowIndex].Cells["gioitinh"].Value.ToString()=="1")
+                ucThongTinHS.TxtId.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                ucThongTinHS.TxtName.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["hoten"].Value.ToString();
+                ucThongTinHS.TxtAddress.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["diachi"].Value.ToString();
+                ucThongTinHS.DtpBirthday.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["ngaysinh"].Value.ToString();
+                ucThongTinHS.TxtEmail.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["email"].Value.ToString();
+                ucThongTinHS.TxtPhone.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["phone"].Value.ToString();
+                if (ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["gioitinh"].Value.ToString()=="1")
                 {
-                    rdbWoman.Checked = true;
-                    rdbMen.Checked = false;
+                    ucThongTinHS.RdbWoman.Checked = true;
+                    ucThongTinHS.RdbMen.Checked = false;
                 }
                 else
                 {
-                    rdbWoman.Checked = false;
-                    rdbMen.Checked = true;
+                    ucThongTinHS.RdbWoman.Checked = false;
+                    ucThongTinHS.RdbMen.Checked = true;
                 }
             }
         }
