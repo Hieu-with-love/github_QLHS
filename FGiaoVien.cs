@@ -16,9 +16,10 @@ namespace QuanLyHocSinh
         public frmGV()
         {
             InitializeComponent();
-            ucThongTinGV.BtnAdd.Click += btnAdd_Click;
-            ucThongTinGV.BtnRemove.Click += btnRemove_Click;    
-            ucThongTinGV.BtnEdit.Click += btnEdit_Click;
+            ucThongTinGV.BtnAdd1.Click += btnAdd_Click;
+            ucThongTinGV.BtnRemove1.Click += btnRemove_Click;    
+            ucThongTinGV.BtnEdit1.Click += btnEdit_Click;
+            ucThongTinGV.DgvInfo1.CellDoubleClick += dgvGV_CellContentDoubleClick;
         }
 
         private void FGiaoVien_Load(object sender, EventArgs e)
@@ -32,37 +33,49 @@ namespace QuanLyHocSinh
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string gt = ucThongTinGV.RdbWoman.Checked ? "1" : "0";
-            GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId.Text, ucThongTinGV.TxtName.Text, ucThongTinGV.TxtAddress.Text, ucThongTinGV.DtpBirthday.Value, ucThongTinGV.TxtEmail.Text, ucThongTinGV.TxtPhone.Text, gt);
+            string gt = ucThongTinGV.RdbWoman1.Checked ? "1" : "0";
+            GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId1.Text, ucThongTinGV.TxtName1.Text, ucThongTinGV.TxtAddress1.Text, ucThongTinGV.DtpBirthday1.Value, ucThongTinGV.TxtEmail1.Text, ucThongTinGV.TxtPhone1.Text, gt, ucThongTinGV.TxtCmnd1.Text);
             gvDAO.AddGV(gv);
-            ucThongTinGV.DgvInfo.DataSource = gvDAO.LoadDataForGV();
+            ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
 
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            string gt = ucThongTinGV.RdbWoman.Checked ? "1" : "0";
-            GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId.Text, ucThongTinGV.TxtName.Text, ucThongTinGV.TxtAddress.Text, ucThongTinGV.DtpBirthday.Value, ucThongTinGV.TxtEmail.Text, ucThongTinGV.TxtPhone.Text, gt);
+            string gt = ucThongTinGV.RdbWoman1.Checked ? "1" : "0";
+            GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId1.Text, ucThongTinGV.TxtName1.Text, ucThongTinGV.TxtAddress1.Text, ucThongTinGV.DtpBirthday1.Value, ucThongTinGV.TxtEmail1.Text, ucThongTinGV.TxtPhone1.Text, gt, ucThongTinGV.TxtCmnd1.Text);
             gvDAO.AddGV(gv);
-            ucThongTinGV.DgvInfo.DataSource = gvDAO.LoadDataForGV();
+            ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string gt = ucThongTinGV.RdbWoman.Checked ? "1" : "0";
-            GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId.Text, ucThongTinGV.TxtName.Text, ucThongTinGV.TxtAddress.Text, ucThongTinGV.DtpBirthday.Value, ucThongTinGV.TxtEmail.Text, ucThongTinGV.TxtPhone.Text, gt);
+            string gt = ucThongTinGV.RdbWoman1.Checked ? "1" : "0";
+            GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId1.Text, ucThongTinGV.TxtName1.Text, ucThongTinGV.TxtAddress1.Text, ucThongTinGV.DtpBirthday1.Value, ucThongTinGV.TxtEmail1.Text, ucThongTinGV.TxtPhone1.Text, gt, ucThongTinGV.TxtCmnd1.Text);
             gvDAO.AddGV(gv);
-            ucThongTinGV.DgvInfo.DataSource = gvDAO.LoadDataForGV();
+            ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
         }
 
         private void dgvGV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                ucThongTinGV.TxtId.Text = ucThongTinGV.DgvInfo.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                ucThongTinGV.TxtName.Text = ucThongTinGV.DgvInfo.Rows[e.RowIndex].Cells["hoten"].Value.ToString();
-                ucThongTinGV.TxtAddress.Text = ucThongTinGV.DgvInfo.Rows[e.RowIndex].Cells["diachi"].Value.ToString();
-                ucThongTinGV.DtpBirthday.Text = ucThongTinGV.DgvInfo.Rows[e.RowIndex].Cells["ngaysinh"].Value.ToString();
+                ucThongTinGV.TxtId1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                ucThongTinGV.TxtName1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["hoten"].Value.ToString();
+                ucThongTinGV.TxtEmail1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["diachi"].Value.ToString();
+                ucThongTinGV.TxtPhone1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["phone"].Value.ToString();
+                ucThongTinGV.TxtAddress1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["diachi"].Value.ToString();
+                ucThongTinGV.DtpBirthday1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["ngaysinh"].Value.ToString();
+                if (ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["gioitinh"].Value.ToString()=="1")
+                {
+                    ucThongTinGV.RdbWoman1.Checked = true;
+                    ucThongTinGV.RdbMen1.Checked = false;
+                }
+                else
+                {
+                    ucThongTinGV.RdbWoman1.Checked = false;
+                    ucThongTinGV.RdbMen1.Checked = true;
+                }
             }
         }
     }

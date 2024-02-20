@@ -40,6 +40,7 @@ namespace QuanLyHocSinh
         public Button BtnAdd1 { get { return btnAdd; } }
         public Button BtnRemove1 { get { return btnRemove; } }
         public Button BtnEdit1 { get { return btnEdit; } }
+        public TextBox TxtCmnd1 { get { return txtCMND; } }
 
     }
 }

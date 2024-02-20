@@ -48,13 +48,15 @@ namespace QuanLyHocSinh
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.txtCMND = new System.Windows.Forms.TextBox();
+            this.lblCMND = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfo)).BeginInit();
             this.SuspendLayout();
             // 
             // rdbWoman
             // 
             this.rdbWoman.AutoSize = true;
-            this.rdbWoman.Location = new System.Drawing.Point(205, 168);
+            this.rdbWoman.Location = new System.Drawing.Point(218, 167);
             this.rdbWoman.Name = "rdbWoman";
             this.rdbWoman.Size = new System.Drawing.Size(45, 20);
             this.rdbWoman.TabIndex = 31;
@@ -64,7 +66,7 @@ namespace QuanLyHocSinh
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(115, 263);
+            this.txtPhone.Location = new System.Drawing.Point(115, 292);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(235, 22);
             this.txtPhone.TabIndex = 29;
@@ -72,7 +74,7 @@ namespace QuanLyHocSinh
             // rdbMen
             // 
             this.rdbMen.AutoSize = true;
-            this.rdbMen.Location = new System.Drawing.Point(115, 168);
+            this.rdbMen.Location = new System.Drawing.Point(115, 167);
             this.rdbMen.Name = "rdbMen";
             this.rdbMen.Size = new System.Drawing.Size(57, 20);
             this.rdbMen.TabIndex = 30;
@@ -82,7 +84,7 @@ namespace QuanLyHocSinh
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(115, 215);
+            this.txtEmail.Location = new System.Drawing.Point(115, 244);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(235, 22);
             this.txtEmail.TabIndex = 28;
@@ -90,7 +92,7 @@ namespace QuanLyHocSinh
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(6, 266);
+            this.lblPhone.Location = new System.Drawing.Point(6, 296);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(66, 16);
             this.lblPhone.TabIndex = 26;
@@ -99,7 +101,7 @@ namespace QuanLyHocSinh
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(6, 218);
+            this.lblEmail.Location = new System.Drawing.Point(6, 248);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(41, 16);
             this.lblEmail.TabIndex = 25;
@@ -108,7 +110,7 @@ namespace QuanLyHocSinh
             // lblSex
             // 
             this.lblSex.AutoSize = true;
-            this.lblSex.Location = new System.Drawing.Point(6, 173);
+            this.lblSex.Location = new System.Drawing.Point(7, 169);
             this.lblSex.Name = "lblSex";
             this.lblSex.Size = new System.Drawing.Size(54, 16);
             this.lblSex.TabIndex = 27;
@@ -116,28 +118,28 @@ namespace QuanLyHocSinh
             // 
             // dtpBirthday
             // 
-            this.dtpBirthday.Location = new System.Drawing.Point(115, 314);
+            this.dtpBirthday.Location = new System.Drawing.Point(115, 343);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(235, 22);
             this.dtpBirthday.TabIndex = 24;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(115, 71);
+            this.txtName.Location = new System.Drawing.Point(115, 70);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(235, 22);
             this.txtName.TabIndex = 23;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(115, 120);
+            this.txtAddress.Location = new System.Drawing.Point(115, 119);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(235, 22);
             this.txtAddress.TabIndex = 22;
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(115, 23);
+            this.txtId.Location = new System.Drawing.Point(115, 22);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(235, 22);
             this.txtId.TabIndex = 21;
@@ -145,7 +147,7 @@ namespace QuanLyHocSinh
             // lblBirthday
             // 
             this.lblBirthday.AutoSize = true;
-            this.lblBirthday.Location = new System.Drawing.Point(6, 319);
+            this.lblBirthday.Location = new System.Drawing.Point(6, 349);
             this.lblBirthday.Name = "lblBirthday";
             this.lblBirthday.Size = new System.Drawing.Size(67, 16);
             this.lblBirthday.TabIndex = 20;
@@ -188,12 +190,12 @@ namespace QuanLyHocSinh
             this.dgvInfo.ReadOnly = true;
             this.dgvInfo.RowHeadersWidth = 51;
             this.dgvInfo.RowTemplate.Height = 24;
-            this.dgvInfo.Size = new System.Drawing.Size(524, 415);
+            this.dgvInfo.Size = new System.Drawing.Size(524, 431);
             this.dgvInfo.TabIndex = 32;
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(143, 378);
+            this.btnRemove.Location = new System.Drawing.Point(146, 408);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 46);
             this.btnRemove.TabIndex = 35;
@@ -202,7 +204,7 @@ namespace QuanLyHocSinh
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(249, 378);
+            this.btnEdit.Location = new System.Drawing.Point(252, 408);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 46);
             this.btnEdit.TabIndex = 34;
@@ -211,17 +213,35 @@ namespace QuanLyHocSinh
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(40, 378);
+            this.btnAdd.Location = new System.Drawing.Point(43, 408);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 46);
             this.btnAdd.TabIndex = 33;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
+            // txtCMND
+            // 
+            this.txtCMND.Location = new System.Drawing.Point(115, 202);
+            this.txtCMND.Name = "txtCMND";
+            this.txtCMND.Size = new System.Drawing.Size(235, 22);
+            this.txtCMND.TabIndex = 37;
+            // 
+            // lblCMND
+            // 
+            this.lblCMND.AutoSize = true;
+            this.lblCMND.Location = new System.Drawing.Point(6, 206);
+            this.lblCMND.Name = "lblCMND";
+            this.lblCMND.Size = new System.Drawing.Size(47, 16);
+            this.lblCMND.TabIndex = 36;
+            this.lblCMND.Text = "CMND";
+            // 
             // UCThongTin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtCMND);
+            this.Controls.Add(this.lblCMND);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
@@ -242,7 +262,7 @@ namespace QuanLyHocSinh
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblId);
             this.Name = "UCThongTin";
-            this.Size = new System.Drawing.Size(883, 455);
+            this.Size = new System.Drawing.Size(883, 471);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -270,6 +290,8 @@ namespace QuanLyHocSinh
         private Button btnRemove;
         private Button btnEdit;
         private Button btnAdd;
+        private TextBox txtCMND;
+        private Label lblCMND;
 
         public RadioButton RdbWoman { get; set; }
         public TextBox TxtPhone { get; set; }
@@ -290,5 +312,7 @@ namespace QuanLyHocSinh
         public Button BtnAdd { get; set; }
         public Button BtnRemove { get; set; }
         public Button BtnEdit { get; set; }
+        public Label LabelCmnd { get; set; }
+        public TextBox TxtCmnd { get; set; }
     }
 }

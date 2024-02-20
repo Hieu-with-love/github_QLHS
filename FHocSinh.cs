@@ -31,16 +31,17 @@ namespace QuanLyHocSinh
             ucThongTinHS.DgvInfo1.Columns["Id"].HeaderText = "Identity";
             ucThongTinHS.DgvInfo1.Columns["hoten"].HeaderText = "Họ tên";
             ucThongTinHS.DgvInfo1.Columns["diachi"].HeaderText = "Địa chỉ";
-            ucThongTinHS.DgvInfo1.Columns["ngaysinh"].HeaderText = "Ngày sinh";
+            ucThongTinHS.DgvInfo1.Columns["gioitinh"].HeaderText = "Giới tính";
+            ucThongTinHS.DgvInfo1.Columns["cmnd"].HeaderText = "CMND";
             ucThongTinHS.DgvInfo1.Columns["email"].HeaderText = "Email";
             ucThongTinHS.DgvInfo1.Columns["phone"].HeaderText = "Số điện thoại";
-            ucThongTinHS.DgvInfo1.Columns["gioitinh"].HeaderText = "Giới tính";
+            ucThongTinHS.DgvInfo1.Columns["ngaysinh"].HeaderText = "Ngày sinh";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string gt = ucThongTinHS.RdbWoman1.Checked ? "1" : "0";
-            HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt); 
+            HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt, ucThongTinHS.TxtCmnd1.Text); 
             hsDAO.AddHs(hs);
             ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();
         }
@@ -48,7 +49,7 @@ namespace QuanLyHocSinh
         private void btnRemove_Click(object sender, EventArgs e)
         {
             string gt = ucThongTinHS.RdbWoman1.Checked ? "1" : "0";
-            HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt);
+            HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt, ucThongTinHS.TxtCmnd1.Text);
             hsDAO.RemoveHs(hs);
             ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();
         }
@@ -56,7 +57,7 @@ namespace QuanLyHocSinh
         private void btnEdit_Click(object sender, EventArgs e)
         {
             string gt = ucThongTinHS.RdbWoman.Checked ? "1" : "0";
-            HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt);
+            HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt, ucThongTinHS.TxtCmnd1.Text);
             hsDAO.EditHs(hs);
             ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();
         }
@@ -81,6 +82,7 @@ namespace QuanLyHocSinh
                     ucThongTinHS.RdbWoman1.Checked = false;
                     ucThongTinHS.RdbMen1.Checked = true;
                 }
+                ucThongTinHS.TxtCmnd1.Text = ucThongTinHS.DgvInfo1.Rows[e.RowIndex].Cells["cmnd"].Value.ToString();
             }
         }
 

@@ -15,7 +15,8 @@ namespace QuanLyHocSinh
         private string email;
         private string phone;
         private string sex;
-        public Persons(string id, string name, string address, DateTime birthday, string email, string phone, string sex)
+        private string cmnd;
+        public Persons(string id, string name, string address, DateTime birthday, string email, string phone, string sex, string cmnd)
         {
             this.id=id;
             this.name=name;
@@ -24,6 +25,7 @@ namespace QuanLyHocSinh
             this.email=email;
             this.phone = phone;
             this.sex = sex;
+            this.cmnd=cmnd;
         }
         public string Id { get => id; }
         public string Name { get => name; }
@@ -32,6 +34,7 @@ namespace QuanLyHocSinh
         public string Email { get => email; }
         public string Phone { get => phone; }
         public string Sex { get => sex; }
+        public string Cmnd { get => cmnd; }
 
     }
 }
