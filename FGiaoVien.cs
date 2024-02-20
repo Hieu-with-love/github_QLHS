@@ -20,11 +20,11 @@ namespace QuanLyHocSinh
 
         private void FGiaoVien_Load(object sender, EventArgs e)
         {
-            ucThongTinGV.DgvInfo.DataSource = gvDAO.LoadDataForGV();
-            ucThongTinGV.DgvInfo.Columns["id"].HeaderText = "Identity";
-            ucThongTinGV.DgvInfo.Columns["hoten"].HeaderText = "Họ tên";
-            ucThongTinGV.DgvInfo.Columns["diachi"].HeaderText = "Địa chỉ";
-            ucThongTinGV.DgvInfo.Columns["ngaysinh"].HeaderText = "Ngày sinh";
+            ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
+            ucThongTinGV.DgvInfo1.Columns["id"].HeaderText = "Identity";
+            ucThongTinGV.DgvInfo1.Columns["hoten"].HeaderText = "Họ tên";
+            ucThongTinGV.DgvInfo1.Columns["diachi"].HeaderText = "Địa chỉ";
+            ucThongTinGV.DgvInfo1.Columns["ngaysinh"].HeaderText = "Ngày sinh";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

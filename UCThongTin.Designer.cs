@@ -287,5 +287,8 @@ namespace QuanLyHocSinh
         public Label LblName { get; set; }
         public Label LblId { get; set; }
         public DataGridView DgvInfo { get; set; }
+        public Button BtnAdd { get; set; }
+        public Button BtnRemove { get; set; }
+        public Button BtnEdit { get; set; }
     }
 }

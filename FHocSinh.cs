@@ -23,14 +23,14 @@ namespace QuanLyHocSinh
 
         private void FHocSinh_Load(object sender, EventArgs e)
         {
-            ucThongTinHS.DgvInfo.DataSource = hsDAO.LoadDataTableForHS();
-            ucThongTinHS.DgvInfo.Columns["Id"].HeaderText = "Identity";
-            ucThongTinHS.DgvInfo.Columns["hoten"].HeaderText = "Họ tên";
-            ucThongTinHS.DgvInfo.Columns["diachi"].HeaderText = "Địa chỉ";
-            ucThongTinHS.DgvInfo.Columns["ngaysinh"].HeaderText = "Ngày sinh";
-            ucThongTinHS.DgvInfo.Columns["email"].HeaderText = "Email";
-            ucThongTinHS.DgvInfo.Columns["phone"].HeaderText = "Số điện thoại";
-            ucThongTinHS.DgvInfo.Columns["gioitinh"].HeaderText = "Giới tính";
+            ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();
+            ucThongTinHS.DgvInfo1.Columns["Id"].HeaderText = "Identity";
+            ucThongTinHS.DgvInfo1.Columns["hoten"].HeaderText = "Họ tên";
+            ucThongTinHS.DgvInfo1.Columns["diachi"].HeaderText = "Địa chỉ";
+            ucThongTinHS.DgvInfo1.Columns["ngaysinh"].HeaderText = "Ngày sinh";
+            ucThongTinHS.DgvInfo1.Columns["email"].HeaderText = "Email";
+            ucThongTinHS.DgvInfo1.Columns["phone"].HeaderText = "Số điện thoại";
+            ucThongTinHS.DgvInfo1.Columns["gioitinh"].HeaderText = "Giới tính";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -17,5 +17,9 @@ namespace QuanLyHocSinh
             InitializeComponent();
         }
 
+        public DataGridView DgvInfo1
+        {
+            get { return dgvInfo; }
+        }
     }
 }
