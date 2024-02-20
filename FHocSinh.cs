@@ -41,9 +41,24 @@ namespace QuanLyHocSinh
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string gt = ucThongTinHS.RdbWoman1.Checked ? "1" : "0";
-            HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt, ucThongTinHS.TxtCmnd1.Text); 
-            hsDAO.AddHs(hs);
-            ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();
+
+            if ((ucThongTinHS.RdbWoman1.Checked==false && ucThongTinHS.RdbMen1.Checked==false)||string.IsNullOrEmpty(ucThongTinHS.TxtName1.Text)||string.IsNullOrEmpty(ucThongTinHS.TxtAddress1.Text)||ucThongTinHS.DtpBirthday1.Value==DateTime.MinValue||string.IsNullOrEmpty(gt)||string.IsNullOrEmpty(ucThongTinHS.TxtCmnd1.Text))
+            {
+                MessageBox.Show("Có field rỗng. Kiểm tra lại");
+            }
+            else
+            {
+                if (ucThongTinHS.TxtPhone1.Text.Length!=10)
+                {
+                    MessageBox.Show("Phone phải có dạng xxx-xxxx-xxx");
+                }
+                else
+                {
+                    HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt, ucThongTinHS.TxtCmnd1.Text);
+                    hsDAO.AddHs(hs);
+                    ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();
+                }
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -56,7 +71,7 @@ namespace QuanLyHocSinh
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string gt = ucThongTinHS.RdbWoman.Checked ? "1" : "0";
+            string gt = ucThongTinHS.RdbWoman1.Checked ? "1" : "0";
             HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt, ucThongTinHS.TxtCmnd1.Text);
             hsDAO.EditHs(hs);
             ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();

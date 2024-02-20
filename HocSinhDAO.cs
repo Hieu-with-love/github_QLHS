@@ -31,7 +31,7 @@ namespace QuanLyHocSinh
                     new SqlParameter("@gt", SqlDbType.Int) {Value = hs.Sex},
                     new SqlParameter("@cmnd", SqlDbType.VarChar) {Value = hs.Cmnd}
                 };
-            sql = "INSERT INTO HocSinh(hoten,diachi,ngaysinh,email,phone,gioitinh) VALUES(@ht,@dc,@ns,@email,@phone,@gt,@cmnd)";
+            sql = "INSERT INTO HocSinh(hoten,diachi,ngaysinh,email,phone,gioitinh,cmnd) VALUES(@ht,@dc,@ns,@email,@phone,@gt,@cmnd)";
             base.Add(sql, lstParam);
         }
 

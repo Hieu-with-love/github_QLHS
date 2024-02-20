@@ -34,9 +34,16 @@ namespace QuanLyHocSinh
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string gt = ucThongTinGV.RdbWoman1.Checked ? "1" : "0";
-            GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId1.Text, ucThongTinGV.TxtName1.Text, ucThongTinGV.TxtAddress1.Text, ucThongTinGV.DtpBirthday1.Value, ucThongTinGV.TxtEmail1.Text, ucThongTinGV.TxtPhone1.Text, gt, ucThongTinGV.TxtCmnd1.Text);
-            gvDAO.AddGV(gv);
-            ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
+            if ((ucThongTinGV.RdbWoman1.Checked==false && ucThongTinGV.RdbMen1.Checked==false)||string.IsNullOrEmpty(ucThongTinGV.TxtName1.Text)||string.IsNullOrEmpty(ucThongTinGV.TxtAddress1.Text)||ucThongTinGV.DtpBirthday1.Value==DateTime.MinValue||string.IsNullOrEmpty(gt)||string.IsNullOrEmpty(ucThongTinGV.TxtCmnd1.Text))
+            {
+                MessageBox.Show("Có field rỗng. Kiểm tra lại");
+            }
+            else
+            {
+                GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId1.Text, ucThongTinGV.TxtName1.Text, ucThongTinGV.TxtAddress1.Text, ucThongTinGV.DtpBirthday1.Value, ucThongTinGV.TxtEmail1.Text, ucThongTinGV.TxtPhone1.Text, gt, ucThongTinGV.TxtCmnd1.Text);
+                gvDAO.AddGV(gv);
+                ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
+            }
 
         }
 
@@ -76,6 +83,7 @@ namespace QuanLyHocSinh
                     ucThongTinGV.RdbWoman1.Checked = false;
                     ucThongTinGV.RdbMen1.Checked = true;
                 }
+                ucThongTinGV.TxtCmnd1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["cmnd"].Value.ToString();
             }
         }
     }
