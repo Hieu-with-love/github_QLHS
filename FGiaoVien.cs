@@ -16,6 +16,9 @@ namespace QuanLyHocSinh
         public frmGV()
         {
             InitializeComponent();
+            ucThongTinGV.BtnAdd.Click += btnAdd_Click;
+            ucThongTinGV.BtnRemove.Click += btnRemove_Click;    
+            ucThongTinGV.BtnEdit.Click += btnEdit_Click;
         }
 
         private void FGiaoVien_Load(object sender, EventArgs e)

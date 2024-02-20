@@ -17,6 +17,10 @@ namespace QuanLyHocSinh
         public frmHS()
         {
             InitializeComponent();
+            ucThongTinHS.BtnAdd1.Click += btnAdd_Click;
+            ucThongTinHS.BtnRemove1.Click += btnRemove_Click;
+            ucThongTinHS.BtnEdit1.Click += btnEdit_Click;
+            ucThongTinHS.DgvInfo1.CellDoubleClick += dgvHS_CellContentDoubleClick;
         }
         // Nếu code như bình thường, chỉ có một xíu form về học sinh này.
         // Thì ta chỉ cần một DB về HocSinh
@@ -35,47 +39,47 @@ namespace QuanLyHocSinh
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string gt = ucThongTinHS.RdbWoman.Checked ? "1" : "0";
-            HocSinh hs = new HocSinh(ucThongTinHS.TxtId.Text, ucThongTinHS.TxtName.Text, ucThongTinHS.TxtAddress.Text, ucThongTinHS.DtpBirthday.Value, ucThongTinHS.TxtEmail.Text, ucThongTinHS.TxtPhone.Text, gt); 
+            string gt = ucThongTinHS.RdbWoman1.Checked ? "1" : "0";
+            HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt); 
             hsDAO.AddHs(hs);
-            ucThongTinHS.DgvInfo.DataSource = hsDAO.LoadDataTableForHS();
+            ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            string gt = ucThongTinHS.RdbWoman.Checked ? "1" : "0";
-            HocSinh hs = new HocSinh(ucThongTinHS.TxtId.Text, ucThongTinHS.TxtName.Text, ucThongTinHS.TxtAddress.Text, ucThongTinHS.DtpBirthday.Value, ucThongTinHS.TxtEmail.Text, ucThongTinHS.TxtPhone.Text, gt);
-            hsDAO.AddHs(hs);
-            ucThongTinHS.DgvInfo.DataSource = hsDAO.LoadDataTableForHS();
+            string gt = ucThongTinHS.RdbWoman1.Checked ? "1" : "0";
+            HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt);
+            hsDAO.RemoveHs(hs);
+            ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             string gt = ucThongTinHS.RdbWoman.Checked ? "1" : "0";
-            HocSinh hs = new HocSinh(ucThongTinHS.TxtId.Text, ucThongTinHS.TxtName.Text, ucThongTinHS.TxtAddress.Text, ucThongTinHS.DtpBirthday.Value, ucThongTinHS.TxtEmail.Text, ucThongTinHS.TxtPhone.Text, gt);
-            hsDAO.AddHs(hs);
-            ucThongTinHS.DgvInfo.DataSource = hsDAO.LoadDataTableForHS();
+            HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt);
+            hsDAO.EditHs(hs);
+            ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();
         }
 
         private void dgvHS_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                ucThongTinHS.TxtId.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["id"].Value.ToString();
-                ucThongTinHS.TxtName.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["hoten"].Value.ToString();
-                ucThongTinHS.TxtAddress.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["diachi"].Value.ToString();
-                ucThongTinHS.DtpBirthday.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["ngaysinh"].Value.ToString();
-                ucThongTinHS.TxtEmail.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["email"].Value.ToString();
-                ucThongTinHS.TxtPhone.Text = ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["phone"].Value.ToString();
-                if (ucThongTinHS.DgvInfo.Rows[e.RowIndex].Cells["gioitinh"].Value.ToString()=="1")
+                ucThongTinHS.TxtId1.Text = ucThongTinHS.DgvInfo1.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                ucThongTinHS.TxtName1.Text = ucThongTinHS.DgvInfo1.Rows[e.RowIndex].Cells["hoten"].Value.ToString();
+                ucThongTinHS.TxtAddress1.Text = ucThongTinHS.DgvInfo1.Rows[e.RowIndex].Cells["diachi"].Value.ToString();
+                ucThongTinHS.DtpBirthday1.Text = ucThongTinHS.DgvInfo1.Rows[e.RowIndex].Cells["ngaysinh"].Value.ToString();
+                ucThongTinHS.TxtEmail1.Text = ucThongTinHS.DgvInfo1.Rows[e.RowIndex].Cells["email"].Value.ToString();
+                ucThongTinHS.TxtPhone1.Text = ucThongTinHS.DgvInfo1.Rows[e.RowIndex].Cells["phone"].Value.ToString();
+                if (ucThongTinHS.DgvInfo1.Rows[e.RowIndex].Cells["gioitinh"].Value.ToString()=="1")
                 {
-                    ucThongTinHS.RdbWoman.Checked = true;
-                    ucThongTinHS.RdbMen.Checked = false;
+                    ucThongTinHS.RdbWoman1.Checked = true;
+                    ucThongTinHS.RdbMen1.Checked = false;
                 }
                 else
                 {
-                    ucThongTinHS.RdbWoman.Checked = false;
-                    ucThongTinHS.RdbMen.Checked = true;
+                    ucThongTinHS.RdbWoman1.Checked = false;
+                    ucThongTinHS.RdbMen1.Checked = true;
                 }
             }
         }
