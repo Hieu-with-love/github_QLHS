@@ -13,12 +13,12 @@ namespace QuanLyHocSinh
     {
         SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=QuanLyHocSinh;Integrated Security=True");
         SqlCommand cmd;
-        public DataTable LoadDataTable(string sql)
+        public DataTable LoadDataTable(string sqlConn)
         {
             try
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
-                cmd = new SqlCommand(sql, conn);
+                cmd = new SqlCommand(sqlConn, conn);
                 DataTable dt = new DataTable();
                 dt.Load(cmd.ExecuteReader());
                 return dt;
