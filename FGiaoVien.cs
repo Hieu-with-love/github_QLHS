@@ -29,6 +29,10 @@ namespace QuanLyHocSinh
             ucThongTinGV.DgvInfo1.Columns["id"].HeaderText = "Identity";
             ucThongTinGV.DgvInfo1.Columns["hoten"].HeaderText = "Họ tên";
             ucThongTinGV.DgvInfo1.Columns["diachi"].HeaderText = "Địa chỉ";
+            ucThongTinGV.DgvInfo1.Columns["gioitinh"].HeaderText = "Giới tính";
+            ucThongTinGV.DgvInfo1.Columns["cmnd"].HeaderText = "CMND";
+            ucThongTinGV.DgvInfo1.Columns["email"].HeaderText = "Email";
+            ucThongTinGV.DgvInfo1.Columns["phone"].HeaderText = "Điện thoại";
             ucThongTinGV.DgvInfo1.Columns["ngaysinh"].HeaderText = "Ngày sinh";
         }
         private bool IsValidEmail(string email)
