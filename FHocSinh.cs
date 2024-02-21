@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace QuanLyHocSinh
 {
@@ -38,6 +39,12 @@ namespace QuanLyHocSinh
             ucThongTinHS.DgvInfo1.Columns["ngaysinh"].HeaderText = "Ngày sinh";
         }
 
+        private bool IsValidEmail(string email)
+        {
+            string parent = @"^[a-zA-Z0-9._%+-]+@gmail\.com$";
+            return Regex.IsMatch(email, parent);
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string gt = ucThongTinHS.RdbWoman1.Checked ? "1" : "0";
@@ -48,9 +55,17 @@ namespace QuanLyHocSinh
             }
             else
             {
-                if (ucThongTinHS.TxtPhone1.Text.Length!=10)
+                if (!IsValidEmail(ucThongTinHS.TxtEmail1.Text))
+                {
+                    MessageBox.Show("Email không hợp lệ. Vui lòng nhập đúng theo mẫu [...@gmail.com]");
+                }
+                else if (ucThongTinHS.TxtPhone1.Text.Length!=10)
                 {
                     MessageBox.Show("Phone phải có dạng xxx-xxxx-xxx");
+                } 
+                else if ((DateTime.Now.AddYears(-17) < ucThongTinHS.DtpBirthday1.Value))
+                {
+                    MessageBox.Show("Tuổi phải lớn hơn hoặc bằng 17");
                 }
                 else
                 {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace QuanLyHocSinh
 {
@@ -30,6 +31,11 @@ namespace QuanLyHocSinh
             ucThongTinGV.DgvInfo1.Columns["diachi"].HeaderText = "Địa chỉ";
             ucThongTinGV.DgvInfo1.Columns["ngaysinh"].HeaderText = "Ngày sinh";
         }
+        private bool IsValidEmail(string email)
+        {
+            string parent = @"^[a-zA-Z0-9._%+-]+@gmail\.com$";
+            return Regex.IsMatch(email, parent);
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -40,9 +46,24 @@ namespace QuanLyHocSinh
             }
             else
             {
-                GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId1.Text, ucThongTinGV.TxtName1.Text, ucThongTinGV.TxtAddress1.Text, ucThongTinGV.DtpBirthday1.Value, ucThongTinGV.TxtEmail1.Text, ucThongTinGV.TxtPhone1.Text, gt, ucThongTinGV.TxtCmnd1.Text);
-                gvDAO.AddGV(gv);
-                ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
+                if (!IsValidEmail(ucThongTinGV.TxtEmail1.Text))
+                {
+                    MessageBox.Show("Email không hợp lệ. Vui lòng nhập đúng theo mẫu [...@gmail.com]");
+                }
+                else if (ucThongTinGV.TxtPhone1.Text.Length!=10)
+                {
+                    MessageBox.Show("Phone phải có dạng xxx-xxxx-xxx");
+                }
+                else if ((DateTime.Now.AddYears(-17) < ucThongTinGV.DtpBirthday1.Value))
+                {
+                    MessageBox.Show("Tuổi phải lớn hơn hoặc bằng 17");
+                }
+                else
+                {
+                    GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId1.Text, ucThongTinGV.TxtName1.Text, ucThongTinGV.TxtAddress1.Text, ucThongTinGV.DtpBirthday1.Value, ucThongTinGV.TxtEmail1.Text, ucThongTinGV.TxtPhone1.Text, gt, ucThongTinGV.TxtCmnd1.Text);
+                    gvDAO.AddGV(gv);
+                    ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
+                }
             }
 
         }
@@ -51,7 +72,7 @@ namespace QuanLyHocSinh
         {
             string gt = ucThongTinGV.RdbWoman1.Checked ? "1" : "0";
             GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId1.Text, ucThongTinGV.TxtName1.Text, ucThongTinGV.TxtAddress1.Text, ucThongTinGV.DtpBirthday1.Value, ucThongTinGV.TxtEmail1.Text, ucThongTinGV.TxtPhone1.Text, gt, ucThongTinGV.TxtCmnd1.Text);
-            gvDAO.AddGV(gv);
+            gvDAO.RemoveGV(gv);
             ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
         }
 
@@ -59,7 +80,7 @@ namespace QuanLyHocSinh
         {
             string gt = ucThongTinGV.RdbWoman1.Checked ? "1" : "0";
             GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId1.Text, ucThongTinGV.TxtName1.Text, ucThongTinGV.TxtAddress1.Text, ucThongTinGV.DtpBirthday1.Value, ucThongTinGV.TxtEmail1.Text, ucThongTinGV.TxtPhone1.Text, gt, ucThongTinGV.TxtCmnd1.Text);
-            gvDAO.AddGV(gv);
+            gvDAO.EditGV(gv);
             ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
         }
 

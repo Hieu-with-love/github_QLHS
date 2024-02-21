@@ -27,9 +27,10 @@ namespace QuanLyHocSinh
                     new SqlParameter("@ns", SqlDbType.Date) {Value = gv.Birthday},
                     new SqlParameter("@email", SqlDbType.VarChar) {Value = gv.Email},
                     new SqlParameter("@phone", SqlDbType.VarChar) {Value = gv.Phone},
-                    new SqlParameter("@gt", SqlDbType.Int) {Value = gv.Sex}
+                    new SqlParameter("@gt", SqlDbType.Int) {Value = gv.Sex},
+                    new SqlParameter("@cmnd", SqlDbType.VarChar) {Value = gv.Cmnd}
                 };
-            sql = "INSERT INTO GiaoVien(hoten,diachi,ngaysinh,email,phone,gioitinh) VALUES(@ht,@dc,@ns,@email,@phone,@gt)";
+            sql = "INSERT INTO GiaoVien(hoten,diachi,ngaysinh,email,phone,gioitinh,cmnd) VALUES(@ht,@dc,@ns,@email,@phone,@gt,@cmnd)";
             base.Add(sql, lstParam);
         }
 
@@ -53,9 +54,10 @@ namespace QuanLyHocSinh
                     new SqlParameter("@ns", SqlDbType.Date) {Value = gv.Birthday},
                     new SqlParameter("@email", SqlDbType.VarChar) {Value = gv.Email},
                     new SqlParameter("@phone", SqlDbType.VarChar) {Value = gv.Phone},
-                    new SqlParameter("@gt", SqlDbType.Int) {Value = gv.Sex}
+                    new SqlParameter("@gt", SqlDbType.Int) {Value = gv.Sex},
+                    new SqlParameter("@cmnd", SqlDbType.VarChar) {Value = gv.Cmnd}
                 };
-            sql = "UPDATE GiaoVien SET hoten=@ht,diachi=@dc,ngaysinh=@ns,email=@email,phone=@phone,gioitinh=@gt WHERE id=@id";
+            sql = "UPDATE GiaoVien SET hoten=@ht,diachi=@dc,ngaysinh=@ns,email=@email,phone=@phone,gioitinh=@gt,cmnd=@cmnd WHERE id=@id";
             base.Edit(sql, lstParam);
         }
     }
