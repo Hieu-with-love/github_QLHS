@@ -39,31 +39,25 @@ namespace QuanLyHocSinh
             ucThongTinHS.DgvInfo1.Columns["ngaysinh"].HeaderText = "Ngày sinh";
         }
 
-        private bool IsValidEmail(string email)
-        {
-            string parent = @"^[a-zA-Z0-9._%+-]+@gmail\.com$";
-            return Regex.IsMatch(email, parent);
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string gt = ucThongTinHS.RdbWoman1.Checked ? "1" : "0";
 
-            if ((ucThongTinHS.RdbWoman1.Checked==false && ucThongTinHS.RdbMen1.Checked==false)||string.IsNullOrEmpty(ucThongTinHS.TxtName1.Text)||string.IsNullOrEmpty(ucThongTinHS.TxtAddress1.Text)||ucThongTinHS.DtpBirthday1.Value==DateTime.MinValue||string.IsNullOrEmpty(gt)||string.IsNullOrEmpty(ucThongTinHS.TxtCmnd1.Text))
+            if (ucThongTinHS.CheckFielddNull())
             {
                 MessageBox.Show("Có field rỗng. Kiểm tra lại");
             }
             else
             {
-                if (!IsValidEmail(ucThongTinHS.TxtEmail1.Text))
+                if (ucThongTinHS.CheckEmail())
                 {
-                    MessageBox.Show("Email không hợp lệ. Vui lòng nhập đúng theo mẫu [...@gmail.com]");
+                    MessageBox.Show("Chưa đúng định dạng [...@gmail.com]");
                 }
-                else if (ucThongTinHS.TxtPhone1.Text.Length!=10)
+                else if (ucThongTinHS.CheckPhone())
                 {
-                    MessageBox.Show("Phone phải có dạng xxx-xxxx-xxx");
-                } 
-                else if ((DateTime.Now.AddYears(-17) < ucThongTinHS.DtpBirthday1.Value))
+                    MessageBox.Show("Số điện thoại sai ! Định dạng đúng: xxxx-xxx-xxx");
+                }
+                else if (ucThongTinHS.CheckAge())
                 {
                     MessageBox.Show("Tuổi phải lớn hơn hoặc bằng 17");
                 }
@@ -87,9 +81,31 @@ namespace QuanLyHocSinh
         private void btnEdit_Click(object sender, EventArgs e)
         {
             string gt = ucThongTinHS.RdbWoman1.Checked ? "1" : "0";
-            HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt, ucThongTinHS.TxtCmnd1.Text);
-            hsDAO.EditHs(hs);
-            ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();
+            if (ucThongTinHS.CheckFielddNull())
+            {
+                MessageBox.Show("Có field rỗng. Kiểm tra lại");
+            }
+            else
+            {
+                if (ucThongTinHS.CheckEmail())
+                {
+                    MessageBox.Show("Chưa đúng định dạng [...@gmail.com]");
+                }
+                else if (ucThongTinHS.CheckPhone())
+                {
+                    MessageBox.Show("Số điện thoại sai ! Định dạng đúng: xxxx-xxx-xxx");
+                }
+                else if (ucThongTinHS.CheckAge())
+                {
+                    MessageBox.Show("Tuổi phải lớn hơn hoặc bằng 17");
+                }
+                else
+                {
+                    HocSinh hs = new HocSinh(ucThongTinHS.TxtId1.Text, ucThongTinHS.TxtName1.Text, ucThongTinHS.TxtAddress1.Text, ucThongTinHS.DtpBirthday1.Value, ucThongTinHS.TxtEmail1.Text, ucThongTinHS.TxtPhone1.Text, gt, ucThongTinHS.TxtCmnd1.Text);
+                    hsDAO.EditHs(hs);
+                    ucThongTinHS.DgvInfo1.DataSource = hsDAO.LoadDataTableForHS();
+                }
+            }
         }
 
         private void dgvHS_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

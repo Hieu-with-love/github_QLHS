@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
 
 namespace QuanLyHocSinh
 {
@@ -35,30 +34,23 @@ namespace QuanLyHocSinh
             ucThongTinGV.DgvInfo1.Columns["phone"].HeaderText = "Điện thoại";
             ucThongTinGV.DgvInfo1.Columns["ngaysinh"].HeaderText = "Ngày sinh";
         }
-        private bool IsValidEmail(string email)
-        {
-            string parent = @"^[a-zA-Z0-9._%+-]+@gmail\.com$";
-            return Regex.IsMatch(email, parent);
-        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string gt = ucThongTinGV.RdbWoman1.Checked ? "1" : "0";
-            if ((ucThongTinGV.RdbWoman1.Checked==false && ucThongTinGV.RdbMen1.Checked==false)||string.IsNullOrEmpty(ucThongTinGV.TxtName1.Text)||string.IsNullOrEmpty(ucThongTinGV.TxtAddress1.Text)||ucThongTinGV.DtpBirthday1.Value==DateTime.MinValue||string.IsNullOrEmpty(gt)||string.IsNullOrEmpty(ucThongTinGV.TxtCmnd1.Text))
+            if (ucThongTinGV.CheckFielddNull())
             {
                 MessageBox.Show("Có field rỗng. Kiểm tra lại");
             }
             else
             {
-                if (!IsValidEmail(ucThongTinGV.TxtEmail1.Text))
+                if (ucThongTinGV.CheckEmail())
                 {
-                    MessageBox.Show("Email không hợp lệ. Vui lòng nhập đúng theo mẫu [...@gmail.com]");
-                }
-                else if (ucThongTinGV.TxtPhone1.Text.Length!=10)
+                    MessageBox.Show("Chưa đúng định dạng [...@gmail.com]");
+                }else if (ucThongTinGV.CheckPhone())
                 {
-                    MessageBox.Show("Phone phải có dạng xxx-xxxx-xxx");
-                }
-                else if ((DateTime.Now.AddYears(-17) < ucThongTinGV.DtpBirthday1.Value))
+                    MessageBox.Show("Số điện thoại sai ! Định dạng đúng: xxxx-xxx-xxx");
+                }else if (ucThongTinGV.CheckAge())
                 {
                     MessageBox.Show("Tuổi phải lớn hơn hoặc bằng 17");
                 }
@@ -83,9 +75,31 @@ namespace QuanLyHocSinh
         private void btnEdit_Click(object sender, EventArgs e)
         {
             string gt = ucThongTinGV.RdbWoman1.Checked ? "1" : "0";
-            GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId1.Text, ucThongTinGV.TxtName1.Text, ucThongTinGV.TxtAddress1.Text, ucThongTinGV.DtpBirthday1.Value, ucThongTinGV.TxtEmail1.Text, ucThongTinGV.TxtPhone1.Text, gt, ucThongTinGV.TxtCmnd1.Text);
-            gvDAO.EditGV(gv);
-            ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
+            if (ucThongTinGV.CheckFielddNull())
+            {
+                MessageBox.Show("Có field rỗng. Kiểm tra lại");
+            }
+            else
+            {
+                if (ucThongTinGV.CheckEmail())
+                {
+                    MessageBox.Show("Chưa đúng định dạng [...@gmail.com]");
+                }
+                else if (ucThongTinGV.CheckPhone())
+                {
+                    MessageBox.Show("Số điện thoại sai ! Định dạng đúng: xxxx-xxx-xxx");
+                }
+                else if (ucThongTinGV.CheckAge())
+                {
+                    MessageBox.Show("Tuổi phải lớn hơn hoặc bằng 17");
+                }
+                else
+                {
+                    GiaoVien gv = new GiaoVien(ucThongTinGV.TxtId1.Text, ucThongTinGV.TxtName1.Text, ucThongTinGV.TxtAddress1.Text, ucThongTinGV.DtpBirthday1.Value, ucThongTinGV.TxtEmail1.Text, ucThongTinGV.TxtPhone1.Text, gt, ucThongTinGV.TxtCmnd1.Text);
+                    gvDAO.EditGV(gv);
+                    ucThongTinGV.DgvInfo1.DataSource = gvDAO.LoadDataForGV();
+                }
+            }
         }
 
         private void dgvGV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -94,7 +108,7 @@ namespace QuanLyHocSinh
             {
                 ucThongTinGV.TxtId1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["id"].Value.ToString();
                 ucThongTinGV.TxtName1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["hoten"].Value.ToString();
-                ucThongTinGV.TxtEmail1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["diachi"].Value.ToString();
+                ucThongTinGV.TxtEmail1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["email"].Value.ToString();
                 ucThongTinGV.TxtPhone1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["phone"].Value.ToString();
                 ucThongTinGV.TxtAddress1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["diachi"].Value.ToString();
                 ucThongTinGV.DtpBirthday1.Text = ucThongTinGV.DgvInfo1.Rows[e.RowIndex].Cells["ngaysinh"].Value.ToString();

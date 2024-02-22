@@ -263,6 +263,7 @@ namespace QuanLyHocSinh
             this.Controls.Add(this.lblId);
             this.Name = "UCThongTin";
             this.Size = new System.Drawing.Size(883, 471);
+            this.Load += new System.EventHandler(this.UCThongTin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInfo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
